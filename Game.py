@@ -1,4 +1,17 @@
 import random
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+print("Welcome to Text-based Blackjack")
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+coins = 1500
+print("Instructions:")
+print("You have " + str(coins) + " coins.\nEach round costs 100 coins.\nEach raise is 100 coins. \nSelecting double will double your current bet.\n")
+print("You can select the options by typing in the corresponding number when prompted.\n")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+start = input("Are you ready to begin?\n1. Yes\n2. No, end game.\nEnter number here: ")
+playAgain = False
+if start == "1":
+    print("Let's begin!")
+    playAgain = True
 
 #Card list:
 cards = ["A","2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -47,39 +60,44 @@ def hitMe(who):
         cards.remove(cards[card])
         counts.remove(counts[card])
     return
-playAgain = True
+
 while playAgain:  
     reShuffle()
     playerTotal = points(playerHand)
     dealerTotal = points(dealerHand)
-    print("You have a " + str(playerHand) + ".")
-    print("You have " + str(playerTotal) + " points.")
-    print("Dealer has a '" + str(dealerHand[0]) + "' showing.")
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    if (len(playerHand) == 2 and playerTotal == 21):
+        print("BlackJack! You win!\n")
+    else:
+        print("You have a " + str(playerHand) + ".")
+        print("You have " + str(playerTotal) + " points.\n")
+        print("Dealer has a '" + str(dealerHand[0]) + "' showing.\n")
     answer = ""
-    while (playerTotal) < 21 and answer != "s":
-        answer = input("What would you like to do? (h, s): ")
-        if answer == "h":
+    while (playerTotal) < 21 and answer != "2":
+        answer = input("What would you like to do?\n1. Hit\n2. Stay\nEnter number here: ")
+        if answer == "1":
             hitMe(playerHand)
             playerTotal = points(playerHand)
-            print("You have a " + str(playerHand) + ".")
-            print("You have " + str(playerTotal) + " points.")
+            print("\nYou have a " + str(playerHand) + ".")
+            print("You have " + str(playerTotal) + " points.\n")
             if playerTotal > 21:
-                print("BUST! Dealer wins!")
-        elif answer == "s":
-            print("Dealer has " + str(dealerHand) + ".")
+                print("\nBUST! Dealer wins!")
+        elif answer == "2":
+            print("\nDealer has " + str(dealerHand) + ".")
             if dealerTotal >= playerTotal:
                 print("Dealer wins!")
             else:
                 while dealerTotal <= 17 or dealerTotal <= playerTotal:
+                    print("\nDealer takes a hit.")
                     hitMe(dealerHand)
                     dealerTotal = points(dealerHand)
                     print("Dealer has " + str(dealerHand) + ".")
                     print("Dealer has " + str(dealerTotal) + " points.")
                     if dealerTotal > 21:
-                        print("Dealer BUSTS! You win!")
+                        print("\nDealer BUSTS! You win!")
                     elif dealerTotal <= 21 and dealerTotal > playerTotal:
-                        print("Dealer wins!")
-    answer = input("Would you like to play again? y/n: ")
-    if answer == "n":
+                        print("\nDealer wins!")
+    answer = input("\nWould you like to play again?\n1. Yes, play again.\n2. No, end game.\nEnter number here: ")
+    if answer == "2":
         playAgain = False
-        print("Thanks for playing!")
+        print("\nThanks for playing!")
