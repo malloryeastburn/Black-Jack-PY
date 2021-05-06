@@ -1,7 +1,7 @@
 # Black-Jack-PY
  Simple, text-based game of black jack.
-
-100 Days of Code: Day 6!
+Last updated: 5/6/21
+100 Days of Code: Day 8!
 
 Program: Create a simple, text-based game of black jack.
 
