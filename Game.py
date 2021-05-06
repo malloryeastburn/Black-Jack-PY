@@ -6,7 +6,7 @@ coins = 1000
 bet = 0
 print("Instructions:")
 print("You have " + str(coins) + " coins.\nEach round costs 100 coins.\nEach raise is 100 coins. \nSelecting double will double your current bet.\n")
-print("You can select the options by typing in the corresponding number when prompted.\n")
+print("You can select the options by typing in the corresponding number when prompted.\nPlace bets prior to selecting stay or hit.\n")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 playAgain = False
 start = input("Are you ready to begin?\n1. Yes\n2. No, end game.\nEnter number here: ")
@@ -118,6 +118,10 @@ while playAgain:
             bet += 100
         elif answer == "4":
             bet *= 2
+    
+    
+    
+    
     print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     print("You have " + str(coins) + " coins.")
     print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
@@ -125,7 +129,6 @@ while playAgain:
     while (answer != "1" and answer != "2"):
         print("\nThat wasn't a valid option. Let's try again. ")
         answer = input("\nWould you like to play again?\n1. Yes, play again.\n2. No, end game.\nEnter number here: ")
-
     if answer == "2":
         playAgain = False
         print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
