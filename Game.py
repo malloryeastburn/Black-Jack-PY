@@ -20,9 +20,7 @@ else:
     print("\nSee you next time!")
 
 #Card list:
-cards = ["A","2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-DECK = ["A","2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-counts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+cards = ["cardlist"]
 playerHand = []
 dealerHand = []
 dealerTotal = 0
@@ -35,19 +33,45 @@ def acesCheck(total, aCount):
 def points(who):
     total = 0
     for card in who:
-        if card == 'A':
+        num = card.split(" ")
+        if num[0] == 'Ace':
             total += 11
-        elif card == "J" or card == "Q" or card == "K":
+        elif num[0] == "Jack" or num[0] == "Queen" or num[0] == "King":
             total += 10
         else:
-            total += int(card)
-    return acesCheck(total,who.count("A"))
+            total += int(num[0])
+    return acesCheck(total,who.count("Ace"))
 
 def reShuffle():
     cards.clear()
-    for index in range(len(DECK)):
-        cards.append(DECK[index])
-        counts[index] = 4
+
+    for i in range(1,14):
+        if i == 1:
+            cards.append("Ace of Hearts")
+            cards.append("Ace of Clubs")
+            cards.append("Ace of Diamonds")
+            cards.append("Ace of Spades")
+        elif i == 11:
+            cards.append("Jack of Hearts")
+            cards.append("Jack of Clubs")
+            cards.append("Jack of Diamonds")
+            cards.append("Jack of Spades")
+        elif i == 12:
+            cards.append("Queen of Hearts")
+            cards.append("Queen of Clubs")
+            cards.append("Queen of Diamonds")
+            cards.append("Queen of Spades")
+        elif i == 13:
+            cards.append("King of Hearts")
+            cards.append("King of Clubs")
+            cards.append("King of Diamonds")
+            cards.append("King of Spades")
+        else:
+            cards.append(str(i) + " of Hearts")
+            cards.append(str(i) + " of Clubs")
+            cards.append(str(i) + " of Diamonds")
+            cards.append(str(i) + " of Spades")
+    print(cards)
     playerHand.clear()
     dealerHand.clear()
     playerTotal = 0
@@ -60,10 +84,7 @@ def reShuffle():
 def hitMe(who):
     card = random.randint(0,len(cards)-1)
     who.append(str(cards[card]))
-    counts[card] -= 1
-    if counts[card] < 0:
-        cards.remove(cards[card])
-        counts.remove(counts[card])
+    cards.remove(cards[card])
     return
 
 while playAgain:  
