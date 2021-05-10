@@ -1,7 +1,7 @@
 # Black-Jack-PY
  Simple, text-based game of black jack.
-Last updated: 5/6/21
-100 Days of Code: Day 8!
+Last updated: 05/09/2021
+100 Days of Code: Day 10!
 
 Program: Create a simple, text-based game of black jack.
 
@@ -11,3 +11,5 @@ I will code this project 100% without any resources or help(such as: google, sta
 Simply using my brain.
 
 Goal: Improve my knowledge of python syntax and become more hireable!
+
+Next commit: restructure dealer's code
