@@ -71,7 +71,6 @@ def reShuffle():
             cards.append(str(i) + " of Clubs")
             cards.append(str(i) + " of Diamonds")
             cards.append(str(i) + " of Spades")
-    print(cards)
     playerHand.clear()
     dealerHand.clear()
     playerTotal = 0
